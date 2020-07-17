@@ -55,7 +55,7 @@ public class Calculator {
 					throw new InvalidInstructionsException("Final action must be 'apply'");
 				}
 
-				InstructionPair iP = new InstructionPair(action, value);
+				InstructionPair<String, Integer> iP = new InstructionPair(action, value);
 
 				parsedInstructions.add(iP);
 
@@ -114,7 +114,7 @@ public class Calculator {
 				Class c = Class.forName("Calculator");
 				Class[] parameterType = { int.class, int.class };
 				Method method = c.getDeclaredMethod(action, parameterType);
-				result = (int) method.invoke(null, cur_val, next_val);
+				result = (int) method.invoke(c, cur_val, next_val);
 
 			} catch (Exception e) {
 
